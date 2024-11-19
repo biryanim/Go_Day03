@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  elastic:
+    container_name: elastic
+    image: elasticsearch:7.17.24
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=docker-cluster
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - discovery.type=single-node
+#      - ingest.geoip.downloader.enabled=false
+#      - xpack.security.enabled=false
+    ports:
+      - 9200:9200
